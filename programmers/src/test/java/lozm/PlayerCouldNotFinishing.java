@@ -26,15 +26,15 @@ public class PlayerCouldNotFinishing {
         String[] participant = (String[]) participantArray.toArray();
 
         //Set the completions
-        String[] completion = {};
         int randomInt = ThreadLocalRandom.current().nextInt(1, participantSize);
-
+        participantArray.remove(randomInt);
+        String[] completion = (String[]) participantArray.toArray();
 
         //When
         String uncompletion = solution(participant, completion);
 
         //Then
-        assertThat(uncompletion).isEqualTo("");
+        assertThat(participant.length-1).isEqualTo(completion.length);
     }
 
     public String solution(String[] participant, String[] completion) {
