@@ -29,7 +29,7 @@ public class PlayerCouldNotFinishing {
             String[] completion = participantArray.toArray(new String[participantArray.size()]);
 
             //When
-            String uncompletion = solution(participant, completion);
+            String uncompletion = solution1(participant, completion);
 
             //Then
             assertThat(participant.length-1).isEqualTo(completion.length);
@@ -51,14 +51,15 @@ public class PlayerCouldNotFinishing {
         return randomName.toString();
     }
 
-    public String solution(String[] participant, String[] completion) {
+    public String solution1(String[] participant, String[] completion) {
         String answer = "";
 
         for (int i = 0; i < participant.length ; i++) {
             boolean answerFlag = true;
 
             for (int j = 0; j < completion.length ; j++) {
-                if(participant[j].equals(completion[i])) {
+                if(participant[i].equals(completion[j])) {
+                    completion[j] = null;
                     answerFlag = false;
                     break;
                 }
