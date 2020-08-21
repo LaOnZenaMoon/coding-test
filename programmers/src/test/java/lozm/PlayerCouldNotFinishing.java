@@ -3,11 +3,13 @@ package lozm;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.in;
 
 public class PlayerCouldNotFinishing {
 
@@ -99,6 +101,21 @@ public class PlayerCouldNotFinishing {
 
         for (String key : participantMap.keySet()) {
             if(participantMap.get(key) > 0) answer += key;
+        }
+
+        return answer;
+    }
+
+    //Using Sorting - not perfect
+    public String solution3(String[] participant, String[] completion) {
+        String answer = "";
+
+        Arrays.sort(participant);
+        Arrays.sort(completion);
+
+        int index = 0;
+        for (index = 0; index < completion.length; index++) {
+            if(!participant[index].equals(completion[index])) return participant[index];
         }
 
         return answer;
