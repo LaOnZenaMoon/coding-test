@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
+import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -14,14 +15,12 @@ public class PlayerCouldNotFinishing {
     @Test
     void test() {
         //Given
-        Faker faker = new Faker();
-
         //Set the participants
         List<String> participantArray = new ArrayList<>();
 
         int participantSize = ThreadLocalRandom.current().nextInt(1, 100000);
         for (int i = 0; i < participantSize; i++) {
-            participantArray.add(faker.name().username());
+            participantArray.add(getRandomName());
         }
         String[] participant = (String[]) participantArray.toArray();
 
@@ -35,6 +34,19 @@ public class PlayerCouldNotFinishing {
 
         //Then
         assertThat(participant.length-1).isEqualTo(completion.length);
+    }
+
+    public String getRandomName() {
+        char[] alphabet = "abcdefghijklmnopqrstuvwxyz".toCharArray();
+        int nameLength = ThreadLocalRandom.current().nextInt(1, 20);
+        StringBuilder randomName = new StringBuilder();
+
+        for (int i = 0; i < nameLength; i++) {
+            int randomAlphabet = ThreadLocalRandom.current().nextInt(0, alphabet.length);
+            randomName.append(alphabet[randomAlphabet]);
+        }
+
+        return getRandomName();
     }
 
     public String solution(String[] participant, String[] completion) {
