@@ -3,6 +3,7 @@ package lozm;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
 
@@ -51,6 +52,7 @@ public class PlayerCouldNotFinishing {
         return randomName.toString();
     }
 
+    //Using list
     public String solution1(String[] participant, String[] completion) {
         String answer = "";
 
@@ -69,6 +71,34 @@ public class PlayerCouldNotFinishing {
                 answer = participant[i];
                 break;
             }
+        }
+
+        return answer;
+    }
+
+    //Using HashMap
+    public String solution2(String[] participant, String[] completion) {
+        String answer = "";
+
+        HashMap<String, Integer> participantMap = new HashMap<>();
+        for (int i = 0; i < participant.length; i++) {
+            int value = 1;
+            if(participantMap.containsKey(participant[i])) {
+                value = participantMap.get(participant[i]) + 1;
+            }
+
+            participantMap.put(participant[i], value);
+        }
+
+        for (int i = 0; i < completion.length; i++) {
+            if(participantMap.containsKey(completion[i])) {
+                int value = participantMap.get(completion[i]) - 1;
+                participantMap.put(completion[i], value);
+            }
+        }
+
+        for (String key : participantMap.keySet()) {
+            if(participantMap.get(key) > 0) answer += key;
         }
 
         return answer;
