@@ -53,6 +53,23 @@ public class PlayerCouldNotFinishing {
 
     public String solution(String[] participant, String[] completion) {
         String answer = "";
+
+        for (int i = 0; i < participant.length ; i++) {
+            boolean answerFlag = true;
+
+            for (int j = 0; j < completion.length ; j++) {
+                if(participant[j].equals(completion[i])) {
+                    answerFlag = false;
+                    break;
+                }
+            }
+
+            if(answerFlag) {
+                answer = participant[i];
+                break;
+            }
+        }
+
         return answer;
     }
 
