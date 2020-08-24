@@ -22,6 +22,8 @@ public class FindPhoneBookByPrefix {
             for (int j = 1; j <phone_book.length ; j++) {
                 if(i == j) continue;
 
+                if(phone_book[i].length() > phone_book[j].length()) continue;
+
                 if(phone_book[j].startsWith(phone_book[i])) {
                     return false;
                 }
