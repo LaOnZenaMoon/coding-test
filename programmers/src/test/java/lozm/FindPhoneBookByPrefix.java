@@ -2,6 +2,8 @@ package lozm;
 
 import org.junit.jupiter.api.Test;
 
+import java.util.Arrays;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class FindPhoneBookByPrefix {
@@ -10,13 +12,15 @@ public class FindPhoneBookByPrefix {
     void test1() {
         String[] testData = {"123", "456", "789"};
 
-        boolean solution = solution(testData);
+        boolean solution = solution1(testData);
 
         assertThat(solution).isEqualTo(true);
     }
 
-    public boolean solution(String[] phone_book) {
+    public boolean solution1(String[] phone_book) {
         boolean answer = true;
+
+        Arrays.sort(phone_book);
 
         for (int i = 0; i <phone_book.length ; i++) {
             for (int j = 1; j <phone_book.length ; j++) {
@@ -31,6 +35,16 @@ public class FindPhoneBookByPrefix {
         }
 
         return answer;
+    }
+
+    public boolean solution2(String[] phoneBook) {
+        for(int i=0; i<phoneBook.length-1; i++) {
+            for(int j=i+1; j<phoneBook.length; j++) {
+                if(phoneBook[i].startsWith(phoneBook[j])) {return false;}
+                if(phoneBook[j].startsWith(phoneBook[i])) {return false;}
+            }
+        }
+        return true;
     }
 
 }
