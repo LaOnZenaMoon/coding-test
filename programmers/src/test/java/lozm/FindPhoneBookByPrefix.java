@@ -2,10 +2,6 @@ package lozm;
 
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class FindPhoneBookByPrefix {
@@ -21,21 +17,14 @@ public class FindPhoneBookByPrefix {
 
     public boolean solution(String[] phone_book) {
         boolean answer = true;
-//
-//        List<HashMap<String, Integer>> phoneBookList = new ArrayList<>();
-//        for (String phoneNumber : phone_book) {
-//            HashMap<String, Integer> map = new HashMap<>();
-//            map.put(phoneNumber, 0);
-//            phoneBookList.add(map);
-//        }
 
-        int index = 0;
-        for (int i = 0; i < phone_book.length; i++) {
-            if (index == i) continue;
+        for (int i = 0; i <phone_book.length ; i++) {
+            for (int j = 1; j <phone_book.length ; j++) {
+                if(i == j) continue;
 
-            if (phone_book[i].contains(phone_book[index])) {
-                answer = false;
-                break;
+                if(phone_book[j].startsWith(phone_book[i])) {
+                    return false;
+                }
             }
         }
 
