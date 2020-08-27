@@ -1,4 +1,5 @@
 rootProject.name = 'coding-test'
 include 'programmers'
 include 'core'
+include 'data-structure'
 
