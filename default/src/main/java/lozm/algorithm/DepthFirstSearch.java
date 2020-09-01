@@ -1,4 +1,4 @@
-package lozm;
+package lozm.algorithm;
 
 public class DepthFirstSearch {
 

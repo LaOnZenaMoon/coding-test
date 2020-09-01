@@ -1,4 +1,4 @@
-package lozm;
+package lozm.dataStructure;
 
 public class SingleLinkedList {
 

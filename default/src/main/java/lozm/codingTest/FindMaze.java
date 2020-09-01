@@ -1,4 +1,4 @@
-package lozm;
+package lozm.codingTest;
 
 public class FindMaze {
 
