@@ -2,6 +2,7 @@ package lozm.algorithm;
 
 public class MergeSort {
 
+    //정렬 배열은 정적 변수로 활용
     static int[] sorted;
 
     public static int[] merge(int[] array, int leftIndex, int middleIndex, int rightIndex) {
