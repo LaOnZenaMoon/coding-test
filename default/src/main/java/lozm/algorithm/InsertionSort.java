@@ -3,7 +3,7 @@ package lozm.algorithm;
 public class InsertionSort {
 
     private static int[] perform(int[] array) {
-        for (int i = 1; i < array.length-1; i++) {
+        for (int i = 0; i < array.length-1; i++) {
             int j = i, temp = 0;
 
             while(array[j] > array[j+1]) {
