@@ -1,7 +1,5 @@
 package lozm;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
 public class Test10974 {
@@ -17,19 +15,18 @@ public class Test10974 {
      * 첫째 줄부터 N!개의 줄에 걸쳐서 모든 순열을 사전순으로 출력한다.
      */
 
-    static List<Integer> targetList = new ArrayList<>();
 
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         int number = scanner.nextInt();
 
-        boolean[] targetCheckArray = new boolean[number + 1];
+        int[] target = new int[number];
 
-        solution(number, targetCheckArray);
+//        solution(target);
     }
 
-    private static void solution(int number, boolean[] targetCheckArray) {
+    private static void solution(int number) {
 
     }
 
