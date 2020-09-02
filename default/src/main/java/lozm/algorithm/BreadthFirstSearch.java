@@ -22,13 +22,13 @@ public class BreadthFirstSearch {
         adjacencyNode[sourceNodeIndex].add(targetNodeIndex);
     }
 
-    public void perform(int startNodeIndex) {
+    public void search(int visitedNodeIndex) {
         boolean[] visited = new boolean[nodeNumber];
         LinkedList<Integer> queue = new LinkedList<>();
 
         //현재 노드 방문 체크
-        visited[startNodeIndex] = true;
-        queue.add(startNodeIndex);
+        visited[visitedNodeIndex] = true;
+        queue.add(visitedNodeIndex);
 
         while (queue.size() != 0) {
             int currentNodeIndex = queue.poll();
@@ -56,7 +56,7 @@ public class BreadthFirstSearch {
         g.addEdge(2, 3);
         g.addEdge(3, 3);
 
-        g.perform(2); /* 주어진 노드를 시작 노드로 BFS 탐색 */
+        g.search(2); /* 주어진 노드를 시작 노드로 BFS 탐색 */
     }
 
 }
