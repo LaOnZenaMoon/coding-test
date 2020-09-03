@@ -9,22 +9,31 @@ public class BreadthFirstSearch {
     private int nodeNumber;
     private LinkedList<Integer> adjacencyNode[];
 
+    private int distance[];
+    private int predecessor[];
+
     public BreadthFirstSearch(int nodeNumber) {
         this.nodeNumber = nodeNumber;
-        adjacencyNode = new LinkedList[nodeNumber];
+        this.adjacencyNode = new LinkedList[nodeNumber];
 
         for (int i = 0; i < nodeNumber; i++) {
-            adjacencyNode[i] = new LinkedList<>();
+            this.adjacencyNode[i] = new LinkedList<>();
         }
+
+        this.distance = new int[nodeNumber];
+        this.predecessor = new int[nodeNumber];
     }
 
     public void addEdge(int sourceNodeIndex, int targetNodeIndex) {
-        adjacencyNode[sourceNodeIndex].add(targetNodeIndex);
+        this.adjacencyNode[sourceNodeIndex].add(targetNodeIndex);
     }
 
     public void search(int visitedNodeIndex) {
         boolean[] visited = new boolean[nodeNumber];
         LinkedList<Integer> queue = new LinkedList<>();
+
+        distance[visitedNodeIndex] = 0;
+        predecessor[visitedNodeIndex] = -1;
 
         //현재 노드 방문 체크
         visited[visitedNodeIndex] = true;
@@ -41,6 +50,9 @@ public class BreadthFirstSearch {
                 if(!visited[nodeIndex]) {
                     visited[nodeIndex] = true;
                     queue.add(nodeIndex);
+
+                    distance[nodeIndex] = distance[currentNodeIndex] + 1;
+                    predecessor[nodeIndex] = currentNodeIndex;
                 }
             }
         }
@@ -57,6 +69,8 @@ public class BreadthFirstSearch {
         g.addEdge(3, 3);
 
         g.search(2); /* 주어진 노드를 시작 노드로 BFS 탐색 */
+
+        System.out.println("g = " + g);
     }
 
 }
