@@ -58,6 +58,16 @@ public class BreadthFirstSearch {
         }
     }
 
+    public void printShortestPath(int startNodeIndex, int endNodeIndex) {
+        if(startNodeIndex == endNodeIndex) System.out.println(startNodeIndex);
+        else if(predecessor[endNodeIndex] == -1) {
+            System.out.println("There is no path from start("+startNodeIndex+") to end("+endNodeIndex+")");
+        } else {
+            printShortestPath(startNodeIndex, predecessor[endNodeIndex]);
+            System.out.println(endNodeIndex);
+        }
+    }
+
     public static void main(String args[]) {
         BreadthFirstSearch g = new BreadthFirstSearch(4);
 
@@ -70,7 +80,7 @@ public class BreadthFirstSearch {
 
         g.search(2); /* 주어진 노드를 시작 노드로 BFS 탐색 */
 
-        System.out.println("g = " + g);
+        g.printShortestPath(2, 1);
     }
 
 }
