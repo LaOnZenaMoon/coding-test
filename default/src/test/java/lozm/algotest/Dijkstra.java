@@ -16,7 +16,7 @@ public class Dijkstra {
         g.inputMaps(2, 7, 3);
         g.inputMaps(5, 7, 2);
 
-        g.search(1);
+        g.search(0);
     }
 
     private void search(int startIndex) {
@@ -61,14 +61,12 @@ public class Dijkstra {
                     }
                 }
             }
-
-            for (int j = 0; j < nodeNumber; j++) {
-                System.out.print(distance[j] + " ");
-            }
-            System.out.println();
         }
 
-
+        for (int j = 0; j < nodeNumber; j++) {
+            System.out.print(distance[j] + " ");
+        }
+        System.out.println();
 
     }
 
