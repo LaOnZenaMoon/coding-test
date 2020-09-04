@@ -63,11 +63,24 @@ public class SinglyLinkedList {
     public Node getNodeAt(int index) {
         Node returnNode = this.headNode;
 
-        for (int i = 0; i < index; i++) {
+        for (int i = 0; i < index+1; i++) {
             returnNode = returnNode.nextNode;
         }
 
         return returnNode;
+    }
+
+    public static void main(String[] args) {
+        SinglyLinkedList list = new SinglyLinkedList();
+        list.insertNodeAt("test1", 0);
+        list.insertNodeAt("test2", 1);
+        list.insertNodeAt("test3", 2);
+        list.insertNodeAt("test4", 3);
+
+        list.removeNodeAt(0);
+        list.removeNodeAt(1);
+        list.removeNodeAt(2);
+        list.removeNodeAt(3);
     }
 
 }
