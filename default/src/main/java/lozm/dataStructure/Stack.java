@@ -13,7 +13,7 @@ public class Stack {
     }
 
     public SinglyLinkedList.Node pop() {
-        return instance.removeNodeAt(instance.getSize());
+        return instance.removeNodeAt(instance.getSize()-1);
     }
 
     public static void main(String[] args) {

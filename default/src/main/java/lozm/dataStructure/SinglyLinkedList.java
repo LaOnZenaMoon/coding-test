@@ -5,7 +5,7 @@ public class SinglyLinkedList {
     private final String HEAD = "HEAD";
     private final String TAIL = "TAIL";
 
-    class Node {
+    public class Node {
         private Object data;
         private Node nextNode;
 
