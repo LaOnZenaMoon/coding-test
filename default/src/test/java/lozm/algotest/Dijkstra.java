@@ -37,6 +37,8 @@ public class Dijkstra {
             }
         }
 
+        //노드가 n개 있을 때 다익스트라를 위해서 반복수는 n-1번이면 된다.
+        //원하지 않으면 각각의 노드가 모두 true인지 확인하는 식으로 구현해도 된다.
         for (int i = 0; i < nodeNumber-1; i++) {
             int minIndex = -1;
             int minValue = Integer.MAX_VALUE;
