@@ -4,19 +4,21 @@ public class SelectionSort {
 
     public static int[] perform(int[] array) {
         for (int i = 0; i < array.length; i++) {
-            int index = 0, min = 999999999, temp = 0;
+            int temp = 0;
+            int minIndex = 0;
+            int min = Integer.MAX_VALUE;
 
             for (int j = i; j < array.length; j++) {
                 if(min > array[j]) {
-                    index = j;
+                    minIndex = j;
                     min = array[j];
                 }
             }
 
             //Swap
-            temp = array[i];
-            array[i] = array[index];
-            array[index] = temp;
+            temp = array[minIndex];
+            array[minIndex] = array[i];
+            array[i] = temp;
         }
 
         return array;
