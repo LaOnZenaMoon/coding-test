@@ -57,6 +57,11 @@ public class Dijkstra {
                     }
                 }
             }
+
+            for (int i = 1; i < nodeNumber+1; i++) {
+                System.out.print(distance[i] + " ");
+            }
+            System.out.println();
         }
     }
 
