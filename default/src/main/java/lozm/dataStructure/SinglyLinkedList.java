@@ -66,6 +66,53 @@ public class SinglyLinkedList {
         }
     }
 
+    public String printAll() {
+        if(head == null) return "[]";
+
+        Node node = this.head;
+        String str = "[";
+
+        while (node.nextNode != null) {
+            str += node.data + ", ";
+            node = node.nextNode;
+        }
+
+        str += node.data;
+        return str + "]";
+    }
+
+    public Object removeFirst() {
+        Node removeNode = this.head;
+        head = removeNode.nextNode;
+
+        Object removeNodeData = removeNode.data;
+        removeNode = null;
+        size--;
+
+        return removeNodeData;
+    }
+
+    public Object removeNodeAt(int index) {
+        if(index == 0) removeFirst();
+
+        Node preNode = findNodeUsingIndex(index - 1);
+        Node targetNode = preNode.nextNode;
+
+        Node nextNode = preNode.nextNode.nextNode;
+        preNode.nextNode = nextNode;
+
+        Object removeNodeData = targetNode.data;
+        if(targetNode == tail) tail = preNode;
+
+        targetNode = null;
+        size--;
+
+        return removeNodeData;
+    }
+
+    public Object getNodeAt(int index) {
+        return findNodeUsingIndex(index).data;
+    }
 
     public static void main(String[] args) {
         SinglyLinkedList list = new SinglyLinkedList();
