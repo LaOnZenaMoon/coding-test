@@ -1,4 +1,4 @@
-package lozm.algorithm;
+package lozm.algotest;
 
 public class QuickSort {
 
@@ -14,16 +14,16 @@ public class QuickSort {
 
     private static void quickSort(int[] data, int start, int end) {
         if(start < end) {
-            int pivot = partition(data, start, end);
-            quickSort(data, start, pivot-1);
-            quickSort(data, pivot, end);
+            int middle = partition(data, start, end);
+            quickSort(data, start, middle-1);
+            quickSort(data, middle, end);
         }
     }
 
     private static int partition(int[] data, int start, int end) {
         int pivot = data[(start+end)/2];
 
-        while (start <= end) {
+        while(start <= end) {
             while (data[start] < pivot) start++;
             while (pivot < data[end]) end--;
 
@@ -40,5 +40,6 @@ public class QuickSort {
 
         return start;
     }
+
 
 }
