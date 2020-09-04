@@ -19,7 +19,7 @@ public class Dijkstra {
         int[] distance = new int[nodeNumber+1];
         boolean[] visited = new boolean[nodeNumber+1];
 
-        for (int i = 1; i < distance.length+1; i++) {
+        for (int i = 1; i < nodeNumber+1; i++) {
             distance[i] = Integer.MAX_VALUE;
         }
 
@@ -34,7 +34,7 @@ public class Dijkstra {
         }
 
         for (int index = 0; index < nodeNumber-1; index++) {
-            int min = Integer.MIN_VALUE;
+            int min = Integer.MAX_VALUE;
             int minIndex = -1;
 
             //최소값 찾기
