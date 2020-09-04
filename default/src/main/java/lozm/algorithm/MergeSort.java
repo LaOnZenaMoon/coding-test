@@ -5,65 +5,50 @@ public class MergeSort {
     //정렬 배열은 정적 변수로 활용
     static int[] sorted;
 
-    public static int[] merge(int[] array, int leftIndex, int middleIndex, int rightIndex) {
-        int leftPointer = leftIndex;
-        int rightPointer = middleIndex+1;
-        int k = leftIndex;
-
-        //작은 순서대로 배열에 삽입
-        while (leftPointer<=middleIndex && rightPointer<=rightIndex) {
-            if(array[leftPointer] <= array[rightPointer]) {
-                sorted[k] = array[leftPointer];
-                leftPointer++;
-            } else {
-                sorted[k] = array[rightPointer];
-                rightPointer++;
-            }
-            k++;
-        }
-
-        //남은 데이터 삽입
-        if(leftPointer > middleIndex) {
-            for (int l = rightPointer; l <= rightIndex; l++) {
-                sorted[k] = array[l];
-                k++;
-            }
-        } else {
-            for (int l = leftPointer; l <= middleIndex; l++) {
-                sorted[k] = array[l];
-                k++;
-            }
-        }
-
-        //정렬된 배열을 삽입
-        for (int l = leftIndex; l <= rightIndex; l++) {
-            array[l] = sorted[l];
-        }
-
-        return array;
-    }
-
-    public static int[] mergeSort(int[] array, int leftIndex, int rightIndex) {
-        //크기가 1보다 큰 경우
-        if(leftIndex < rightIndex) {
-            int middleIndex = (leftIndex + rightIndex) / 2;
-            mergeSort(array, leftIndex, middleIndex);
-            mergeSort(array, middleIndex+1, rightIndex);
-            merge(array, leftIndex, middleIndex, rightIndex);
-        }
-
-        return array;
-    };
-
     public static void main(String[] args) {
         int[] data = {3,5,2,1,4,6,5,9};
 
         sorted = new int[data.length];
 
-        int[] perform = mergeSort(data, 0, data.length-1);
+        mergeSort(data, 0, data.length-1);
 
-        for (int item : perform) {
+        for (int item : data) {
             System.out.println("item = " + item);
+        }
+    }
+
+    private static void mergeSort(int[] data, int left, int right) {
+        if(left < right) {
+            int middle = (left + right) / 2;
+            mergeSort(data, left, middle);
+            mergeSort(data, middle+1, right);
+            merge(data, left, middle, right);
+        }
+    }
+
+    private static void merge(int[] data, int left, int middle, int right) {
+        int pointerLeft = left;
+        int pointerRight = middle+1;
+        int index = left;
+
+        while(pointerLeft <= middle && pointerRight <= right) {
+            if(data[pointerLeft] <= data[pointerRight]) {
+                sorted[index++] = data[pointerLeft++];
+            } else {
+                sorted[index++] = data[pointerRight++];
+            }
+        }
+
+        while (pointerLeft <= middle) {
+            sorted[index++] = data[pointerLeft++];
+        }
+
+        while(pointerRight <= right) {
+            sorted[index++] = data[pointerRight++];
+        }
+
+        for (int i = left; i <= right; i++) {
+            data[i] = sorted[i];
         }
     }
 

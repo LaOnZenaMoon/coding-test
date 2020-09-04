@@ -17,37 +17,37 @@ public class MergeSort {
         }
     }
 
-    private static void mergeSort(int[] data, int leftIndex, int rightIndex) {
-        if(leftIndex < rightIndex) {
-            int middleIndex = (leftIndex + rightIndex) / 2;
-            mergeSort(data, leftIndex, middleIndex);
-            mergeSort(data, middleIndex+1, rightIndex);
-            merge(data, leftIndex, middleIndex, rightIndex);
+    private static void mergeSort(int[] data, int left, int right) {
+        if(left < right) {
+            int middle = (left + right) / 2;
+            mergeSort(data, left, middle);
+            mergeSort(data, middle+1, right);
+            merge(data, left, middle, right);
         }
     }
 
-    private static void merge(int[] data, int leftIndex, int middleIndex, int rightIndex) {
-        int leftPointer = leftIndex;
-        int rightPointer = middleIndex+1;
-        int tempIndex = leftIndex;
+    private static void merge(int[] data, int left, int middle, int right) {
+        int pointerLeft = left;
+        int pointerRight = middle+1;
+        int index = left;
 
-        while(leftPointer <= middleIndex && rightPointer <= rightIndex) {
-            if(data[leftPointer] <= data[rightPointer]) {
-                sorted[tempIndex++] = data[leftPointer++];
+        while(pointerLeft <= middle && pointerRight <= right) {
+            if(data[pointerLeft] <= data[pointerRight]) {
+                sorted[index++] = data[pointerLeft++];
             } else {
-                sorted[tempIndex++] = data[rightPointer++];
+                sorted[index++] = data[pointerRight++];
             }
         }
 
-        while(leftPointer <= middleIndex) {
-            sorted[tempIndex++] = data[leftPointer++];
+        while (pointerLeft <= middle) {
+            sorted[index++] = data[pointerLeft++];
         }
 
-        while(rightPointer <= rightIndex) {
-            sorted[tempIndex++] = data[rightPointer++];
+        while(pointerRight <= right) {
+            sorted[index++] = data[pointerRight++];
         }
 
-        for (int i = leftIndex; i <= rightIndex; i++) {
+        for (int i = left; i <= right; i++) {
             data[i] = sorted[i];
         }
     }
