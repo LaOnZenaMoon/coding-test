@@ -56,6 +56,10 @@ public class SinglyLinkedList {
         }
     }
 
+    public int getSize() {
+        return this.size;
+    }
+
     public Node getNodeAt(int index) {
         Node returnNode = this.headNode;
 
