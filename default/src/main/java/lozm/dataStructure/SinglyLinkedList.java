@@ -2,6 +2,9 @@ package lozm.dataStructure;
 
 public class SinglyLinkedList {
 
+    private final String HEAD = "HEAD";
+    private final String TAIL = "TAIL";
+
     class Node {
         private Object data;
         private Node nextNode;
@@ -12,115 +15,55 @@ public class SinglyLinkedList {
         }
     }
 
-    private Node head;
-    private Node tail;
-    private int size = 0;
+    private int size;
+    private Node headNode;
+    private Node tailNode;
 
-    public void addFirst(Object input) {
+    public SinglyLinkedList() {
+        this.headNode = new Node(HEAD);
+        this.tailNode = new Node(TAIL);
+        headNode.nextNode = tailNode;
+    }
+
+    public void insertNodeAt(Object input, int index) {
+        Node prevNode = getNodeAt(index - 1);
         Node newNode = new Node(input);
+        Node nextNode = prevNode.nextNode;
 
-        newNode.nextNode = head;
-        head = newNode;
-
+        prevNode.nextNode = newNode;
+        newNode.nextNode = nextNode;
+        
         size++;
-
-        if(head.nextNode == null) tail = head;
     }
 
-    public void addLast(Object input) {
-        Node newNode = new Node(input);
+    public Node removeNodeAt(int index) {
+        Node prevNode = getNodeAt(index-1);
+        Node removeNode = prevNode.nextNode;
+        Node nextNode = removeNode.nextNode;
 
-        if(size == 0) addFirst(input);
-        else {
-            tail.nextNode = newNode;
-            tail = newNode;
+        prevNode.nextNode = nextNode;
 
-            size++;
+        size--;
+
+        return removeNode;
+    }
+
+    public void printAll() {
+        Node currentNode = this.headNode;
+        while(!currentNode.nextNode.data.equals(TAIL)) {
+            currentNode = currentNode.nextNode;
+            System.out.println("currentNode = " + currentNode);
         }
-
     }
 
-    public Node findNodeUsingIndex(int index) {
-        Node findNode = this.head;
+    public Node getNodeAt(int index) {
+        Node returnNode = this.headNode;
 
         for (int i = 0; i < index; i++) {
-            findNode = findNode.nextNode;
+            returnNode = returnNode.nextNode;
         }
 
-        return findNode;
-    }
-
-    public void addNodeAt(Object input, int index) {
-        if(index == 0) addFirst(input);
-        else {
-            Node preNode = findNodeUsingIndex(index-1);
-            Node targetNode = preNode.nextNode;
-
-            Node newNode = new Node(input);
-            preNode.nextNode = newNode;
-            newNode.nextNode = targetNode;
-
-            size++;
-
-            if(newNode.nextNode == null) tail = newNode;
-        }
-    }
-
-    public String printAll() {
-        if(head == null) return "[]";
-
-        Node node = this.head;
-        String str = "[";
-
-        while (node.nextNode != null) {
-            str += node.data + ", ";
-            node = node.nextNode;
-        }
-
-        str += node.data;
-        return str + "]";
-    }
-
-    public Object removeFirst() {
-        Node removeNode = this.head;
-        head = removeNode.nextNode;
-
-        Object removeNodeData = removeNode.data;
-        removeNode = null;
-        size--;
-
-        return removeNodeData;
-    }
-
-    public Object removeNodeAt(int index) {
-        if(index == 0) removeFirst();
-
-        Node preNode = findNodeUsingIndex(index - 1);
-        Node targetNode = preNode.nextNode;
-
-        Node nextNode = preNode.nextNode.nextNode;
-        preNode.nextNode = nextNode;
-
-        Object removeNodeData = targetNode.data;
-        if(targetNode == tail) tail = preNode;
-
-        targetNode = null;
-        size--;
-
-        return removeNodeData;
-    }
-
-    public Object getNodeAt(int index) {
-        return findNodeUsingIndex(index).data;
-    }
-
-    public static void main(String[] args) {
-        SinglyLinkedList list = new SinglyLinkedList();
-        list.addFirst("test1");
-        list.addFirst("test2");
-        list.addFirst("test3");
-
-        System.out.println("list = " + list);
+        return returnNode;
     }
 
 }
