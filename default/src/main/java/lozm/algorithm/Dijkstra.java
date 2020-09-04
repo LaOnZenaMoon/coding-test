@@ -73,6 +73,7 @@ public class Dijkstra {
         g.inputMaps(7, 6, 3);
         g.inputMaps(3, 8, 3);
         g.inputMaps(6, 8, 2);
+
         g.search(1);
     }
 
