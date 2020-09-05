@@ -42,8 +42,10 @@ public class Dijkstra {
 
             for (int j = 0; j < nodeNumber; j++) {
                 if(!visited[j] && distance[j] != Integer.MAX_VALUE) {
-                    minIndex = j;
-                    minValue = distance[j];
+                    if(distance[j] < minValue) {
+                        minIndex = j;
+                        minValue = distance[j];
+                    }
                 }
             }
 
@@ -59,10 +61,9 @@ public class Dijkstra {
 
         }
 
-        for (int j = 0; j < nodeNumber; j++) {
-            System.out.print(distance[j] + " ");
+        for (int i = 0; i < nodeNumber; i++) {
+            System.out.println(distance[i] + " ");
         }
-        System.out.println();
 
     }
 
