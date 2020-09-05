@@ -25,6 +25,36 @@ public class HeapSort {
     }
 
     private static int[] perform(int[] data) {
+        heapify(data, data.length);
 
+        for (int i = data.length-1; i > 0; i--) {
+            //Swap
+            int temp = data[0];
+            data[0] = data[i];
+            data[i] = temp;
+
+            heapify(data, i);
+        }
+
+        return data;
+    }
+
+    private static void heapify(int[] data, int nodeNumber) {
+        for (int i = 1; i < nodeNumber; i++) {
+            int child = i;
+
+            while (child > 0) {
+                int parent = (child-1)/2;
+
+                if(data[child] > data[child]) {
+                    //Swap
+                    int temp = data[parent];
+                    data[parent] = data[child];
+                    data[child] = temp;
+                }
+
+                child = parent;
+            }
+        }
     }
 }
