@@ -1,4 +1,4 @@
-package lozm.algotest2;
+package lozm.algotest3;
 
 public class MergeSort {
 
@@ -28,7 +28,7 @@ public class MergeSort {
 
     private static void merge(int[] data, int start, int middle, int end) {
         int left = start;
-        int right = middle + 1;
+        int right = middle+1;
         int index = start;
 
         while (left <= middle && right <= end) {
