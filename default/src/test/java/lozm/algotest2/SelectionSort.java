@@ -1,6 +1,6 @@
 package lozm.algotest2;
 
-public class SelectionTest {
+public class SelectionSort {
 
     public static void main(String[] args) {
         int[] data = {3,5,2,1,4,6,5,9};
