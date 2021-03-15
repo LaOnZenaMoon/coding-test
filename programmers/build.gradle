@@ -7,7 +7,7 @@ ext {
 }
 
 dependencies {
-    compile project(':core')
+//    compile project(':core')
 
     testImplementation 'com.github.javafaker:javafaker:0.12'
 
