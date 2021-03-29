@@ -1,15 +1,3 @@
-plugins {
-
-}
-
-ext {
-
-}
-
 dependencies {
-//    compile project(':core')
-}
 
-test {
-    useJUnitPlatform()
 }

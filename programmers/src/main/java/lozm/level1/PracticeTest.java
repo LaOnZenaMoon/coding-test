@@ -73,6 +73,7 @@ public class PracticeTest {
 
         Person person3 = new Person(3, new int[]{3, 3, 1, 1, 2, 2, 4, 4, 5, 5}, answerLength);
         personList.add(person3);
+
         // 2. 사람별 점수 세팅
         for (int i = 0; i < answers.length; i++) {
             int index = i;
@@ -85,7 +86,6 @@ public class PracticeTest {
         }
 
         // 3. 등수 세팅
-//        Collections.sort(personList);
         int highestPoint = personList.stream()
                 .mapToInt(person -> person.point)
                 .max()
