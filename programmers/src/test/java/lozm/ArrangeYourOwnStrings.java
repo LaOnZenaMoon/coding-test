@@ -3,6 +3,9 @@ package lozm;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
+import java.util.Collections;
+
 public class ArrangeYourOwnStrings {
 
     @Test
@@ -12,7 +15,7 @@ public class ArrangeYourOwnStrings {
         int n = 1;
 
         // When
-        String[] solution = solution(strings, n);
+        String[] solution = bestSolution(strings, n);
 
         // Then
         String[] answers = {"car", "bed", "sun"};
@@ -26,7 +29,7 @@ public class ArrangeYourOwnStrings {
         int n = 2;
 
         // When
-        String[] solution = solution(strings, n);
+        String[] solution = bestSolution(strings, n);
 
         // Then
         String[] answers = {"abcd", "abce", "cdx"};
@@ -62,6 +65,20 @@ public class ArrangeYourOwnStrings {
         }
 
         return strings;
+    }
+
+    public String[] bestSolution(String[] strings, int n) {
+        String[] answer = {};
+        ArrayList<String> arr = new ArrayList<>();
+        for (int i = 0; i < strings.length; i++) {
+            arr.add("" + strings[i].charAt(n) + strings[i]);
+        }
+        Collections.sort(arr);
+        answer = new String[arr.size()];
+        for (int i = 0; i < arr.size(); i++) {
+            answer[i] = arr.get(i).substring(1, arr.get(i).length());
+        }
+        return answer;
     }
 
 }
