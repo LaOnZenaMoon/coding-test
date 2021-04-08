@@ -5,19 +5,17 @@ import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 
-public class Permutation {
+public class Combination {
 
     private int[] input;
-    private int[] output;
     private Set<List<Integer>> result = new LinkedHashSet<>();
     private boolean[] visited;
 
-    protected Permutation() {
+    protected Combination() {
     }
 
-    public Permutation(int[] input) {
+    public Combination(int[] input) {
         this.input = input;
-        this.output = new int[input.length];
         this.visited = new boolean[input.length];
     }
 
@@ -26,27 +24,27 @@ public class Permutation {
     }
 
     public void run(int n, int r, int choose) {
-        if (choose == r) {
-            addResult(output, r);
+        if (r == 0) {
+            addResult(visited, n);
             return;
         }
 
-        for (int i = 0; i < n; i++) {
-            if (visited[i] == false) {
-                visited[i] = true;
-                output[choose] = input[i];
-                run(n, r, choose + 1);
-                visited[i] = false;
-            }
+        for (int i = choose; i < n; i++) {
+            visited[i] = true;
+            run(n, r - 1, i + 1);
+            visited[i] = false;
         }
     }
 
-    private void addResult(int[] arr, int r) {
+    private void addResult(boolean[] visited, int n) {
         List<Integer> elementList = new ArrayList<>();
-        for (int i = 0; i < r; i++) {
-            elementList.add(arr[i]);
+        for (int i = 0; i < n; i++) {
+            if (visited[i]) {
+                elementList.add(input[i]);
+            }
         }
 
         result.add(elementList);
     }
+
 }
