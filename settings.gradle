@@ -1,6 +1,6 @@
 rootProject.name = 'coding-test'
 include 'programmers'
-//include 'core'
+include 'design-pattern'
 include 'default'
 include 'baekjoon'
 
