@@ -6,8 +6,8 @@ import java.util.Set;
 public class PermutationMain {
 
     public static void main(String[] args) {
-        int[] input = {1, 2, 3};
-        Permutation permutation = new Permutation(input);
+        Integer[] input = {1, 2, 3};
+        Permutation<Integer> permutation = new Permutation(input, new Integer[input.length]);
         permutation.run(3, 2, 0);
         Set<List<Integer>> result = permutation.getResult();
         for (List<Integer> integers : result) {

@@ -5,23 +5,23 @@ import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 
-public class Permutation {
+public class Permutation<T> {
 
-    private int[] input;
-    private int[] output;
-    private Set<List<Integer>> result = new LinkedHashSet<>();
+    private T[] input;
+    private T[] output;
+    private Set<List<T>> result = new LinkedHashSet<>();
     private boolean[] visited;
 
     protected Permutation() {
     }
 
-    public Permutation(int[] input) {
+    public Permutation(T[] input, T[] output) {
         this.input = input;
-        this.output = new int[input.length];
+        this.output = output;
         this.visited = new boolean[input.length];
     }
 
-    public Set<List<Integer>> getResult() {
+    public Set<List<T>> getResult() {
         return result;
     }
 
@@ -41,10 +41,10 @@ public class Permutation {
         }
     }
 
-    private void addResult(int[] arr, int r) {
-        List<Integer> elementList = new ArrayList<>();
+    private void addResult(T[] output, int r) {
+        List<T> elementList = new ArrayList<>();
         for (int i = 0; i < r; i++) {
-            elementList.add(arr[i]);
+            elementList.add(output[i]);
         }
 
         result.add(elementList);

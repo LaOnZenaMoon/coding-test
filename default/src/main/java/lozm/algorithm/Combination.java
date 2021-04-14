@@ -5,21 +5,21 @@ import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 
-public class Combination {
+public class Combination<T> {
 
-    private int[] input;
-    private Set<List<Integer>> result = new LinkedHashSet<>();
+    private T[] input;
+    private Set<List<T>> result = new LinkedHashSet<>();
     private boolean[] visited;
 
     protected Combination() {
     }
 
-    public Combination(int[] input) {
+    public Combination(T[] input) {
         this.input = input;
         this.visited = new boolean[input.length];
     }
 
-    public Set<List<Integer>> getResult() {
+    public Set<List<T>> getResult() {
         return result;
     }
 
@@ -37,7 +37,7 @@ public class Combination {
     }
 
     private void addResult(boolean[] visited, int n) {
-        List<Integer> elementList = new ArrayList<>();
+        List<T> elementList = new ArrayList<>();
         for (int i = 0; i < n; i++) {
             if (visited[i]) {
                 elementList.add(input[i]);
