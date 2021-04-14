@@ -1,9 +1,7 @@
-package lozm;
+package lozm.level1;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-
-import java.nio.charset.StandardCharsets;
 
 public class CaesarPassword {
 
@@ -57,10 +55,10 @@ public class CaesarPassword {
             int target = s.charAt(i);
             if (97 <= target && target <= 122) {
                 target += n;
-                target = target > 122 ? target - 122 : target;
+                target = target > 122 ? target - 26 : target;
             } else if (65 <= target && target <= 90) {
                 target += n;
-                target = target > 90 ? target - 90 : target;
+                target = target > 90 ? target - 26 : target;
             }
 
             answer += (char) target;

@@ -1,4 +1,4 @@
-package lozm;
+package lozm.level1;
 
 public class SumBetweenTwoIntegers {
 
