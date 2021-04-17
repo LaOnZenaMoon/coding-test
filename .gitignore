@@ -41,6 +41,8 @@ out/
 /build
 gradlew
 gradlew.bat
-/kakao
 build
 generated
+
+/kakao
+/naver
