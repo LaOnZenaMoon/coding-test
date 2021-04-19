@@ -1,4 +1,4 @@
-rootProject.name = 'coding-test'
+rootProject.name = 'java-playground'
 include 'programmers'
 include 'design-pattern'
 include 'default'
