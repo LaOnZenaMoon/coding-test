@@ -42,7 +42,7 @@ public class StockPrice {
 
             if (queue.isEmpty()) {
                 answerList.add(time);
-                break;
+                continue;
             }
 
             int compareCount = 0;
