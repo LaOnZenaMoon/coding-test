@@ -1,12 +1,8 @@
 package lozm.nio.serialize;
 
-import lombok.Getter;
-import lombok.Setter;
 
 import java.io.Serializable;
 
-@Getter
-@Setter
 public class Coffee implements Serializable {
 
     private String name;
@@ -27,4 +23,43 @@ public class Coffee implements Serializable {
         }
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public String getSize() {
+        return size;
+    }
+
+    public int getPrice() {
+        return price;
+    }
+
+    public Description getDescription() {
+        return description;
+    }
+
+    public String getSecret() {
+        return secret;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setSize(String size) {
+        this.size = size;
+    }
+
+    public void setPrice(int price) {
+        this.price = price;
+    }
+
+    public void setDescription(Description description) {
+        this.description = description;
+    }
+
+    public void setSecret(String secret) {
+        this.secret = secret;
+    }
 }

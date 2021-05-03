@@ -7,7 +7,7 @@ import java.util.ListIterator;
 public class BreadthFirstSearch {
 
     private int nodeNumber;
-    private LinkedList<Integer> adjacencyNode[];
+    private LinkedList<Integer>[] adjacencyNode;
 
     private int distance[];
     private int predecessor[];

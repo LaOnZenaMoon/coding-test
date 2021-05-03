@@ -1,13 +1,17 @@
 package lozm.thread;
 
-import lombok.Getter;
-import lombok.Setter;
 
-@Getter @Setter
 public class Calculator {
 
     private int number;
 
+    public int getNumber() {
+        return number;
+    }
+
+    public void setNumber(int number) {
+        this.number = number;
+    }
 
     public synchronized void addNumber(int number, long sleep) {
         try {
