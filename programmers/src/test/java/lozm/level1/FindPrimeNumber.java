@@ -44,6 +44,18 @@ public class FindPrimeNumber {
         Assertions.assertEquals(3, solution);
     }
 
+    @Test
+    public void testCase4() {
+        // Given
+        int n = 9999999;
+
+        // When
+        int solution = solution(n);
+
+        // Then
+        Assertions.assertEquals(3, solution);
+    }
+
     /**
      * 소수 찾기
      * https://programmers.co.kr/learn/courses/30/lessons/12921
